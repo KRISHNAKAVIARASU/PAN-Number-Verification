@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAN-Verficationb</title>
+
+    <style>
+        #outerbox{
+            width: 550px;
+            height:150px;
+            border: 1px solid black;
+            margin:15rem auto;
+            padding: 15px;
+        }
+        #input_box h1{
+            display: inline;
+        }
+        #btn{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 50px;
+        }
+        #button{
+            padding: 8px 14px;
+        }
+        #pan_number{
+            height: 35px;
+           font-size: 15px;
+        }
+        #type_check{
+            color:red;
+            padding-left: 5px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outerbox">
+        <div id="input_box">
+            <h1>PAN Card: </h1>
+            <input type="text" id="pan_number" maxlength="10" >
+            <span id="type_check"></span>
+        </div>
+        <div id="btn">
+            <button id="button" onclick="return panverification()">Submit</button>
+        </div>
+    </div>
+    <script>
+        function panverification(){
+
+            let numbers=document.getElementById("pan_number").value
+            console.log(numbers)
+            let pan_number_pattern=/^[A-Z]{5,}[0-9]{4,}[A-Z]{1,}$/;
+            if(numbers==''){
+                document.getElementById("type_check").innerHTML="Enter PAN Number"
+                return false
+            }
+            if(!pan_number_pattern.test(numbers)){
+                document.getElementById("type_check").innerHTML="Invalid PAN Number"
+                return false
+            }
+            return alert("your PAN Number Verified")
+        }
+    </script>
+</body>
+</html>
